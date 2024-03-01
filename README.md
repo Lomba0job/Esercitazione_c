@@ -1,0 +1,2 @@
+# Esercitazione_c
+esercitazioni
