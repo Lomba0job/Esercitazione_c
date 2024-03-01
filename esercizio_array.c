@@ -7,7 +7,7 @@
 
 /*
 OUTPUT DEL PROGRAMMA
-
+----------------------------------------------------------------------
 inserire il valore (1):         3
 inserire il valore (2):         4
 inserire il valore (3):         5
