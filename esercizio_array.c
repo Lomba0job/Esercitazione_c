@@ -18,13 +18,15 @@ inserire il valore (4):         6
 */
 
 #include <stdio.h> // Libreria standard IO 
+#define N 10 //define di dimensione array
+
 
 int main(void)
 {
-    int v[4]; //allocato un vettore di 4 valori (poszioni 0-3)
+    int v[N]; //allocato un vettore di N valori (poszioni 0-N-1)
 
     //Popolamento vettore
-    for(int i = 0; i < 4; i++) //ciclo for che fa variare i da 0 a 3
+    for(int i = 0; i < N; i++) //ciclo for che fa variare i da 0 a N-1
     {
         printf("inserire il valore (%d): \t", i+1); //stampa a video il numero  dell'elemento da inserire 1-4
         scanf("%d", &v[i]); //associare il valore inserito da tastiera nella posizione appropriata nell'array
@@ -32,7 +34,7 @@ int main(void)
 
 
     //stampa del vettore in ordine opposto
-    for(int i = 3; i >=0; i--) //ciclo for che fa variare i da 3 a 0
+    for(int i = N-1; i >=0; i--) //ciclo for che fa variare i da N-1 a 0
     {
         printf(" %d ", v[i]); //stampa a video il valore dell'array da 3-0
     }
