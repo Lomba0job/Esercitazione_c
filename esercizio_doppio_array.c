@@ -18,7 +18,7 @@ OUTPUT DEL PROGRAMMA
 
 int main(void)
 {
-    int v[N], v2[N], i2=0;
+    int v[N], v2[N], i2=0; //allocazione di due array di dimensione fissa N e una variabile int a vlaore iniziale 0
     
     for (int i=0; i<N; i++)
     {
