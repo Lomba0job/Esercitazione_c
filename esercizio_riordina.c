@@ -21,12 +21,12 @@ array decrescente:  5 4 3 1
 
 */
 
-#include <stdio.h> // Libreria standard IO 
+#include <stdio.h> // Libreria standard IO
 
 int main(void)
 {
     int N;
-    
+
     printf("Di quanti valori vuoi che sia composto il vettore? ");
     scanf("%d", &N);
 
@@ -36,6 +36,58 @@ int main(void)
     {
         printf("inserire il valore n%d: ", i+1);
         scanf("%d", &v[i]);
+        v2[i] = v[i];
+    }
+
+
+    for(int i=0; i<N-1; i++)
+    {
+        int appoggio;
+        printf("\n\n Esecuzione %d:\n", i+1);
+        for(int a=i+1;a<N;a++)
+        {
+            appoggio = v2[a];
+
+            if (appoggio < v2[i])
+            {
+                printf("Swap:\t");
+                int temp = v2[i];
+                v2[i] = appoggio;
+                v2[a] = temp;
+                for (int j=0; j<N; j++)
+                {
+                    if(j == i || j == a)
+                    {
+                        printf(" (");
+                    }
+                    else
+                    {
+                        printf(" ");
+                    }
+                    printf("%4d", v2[j]);
+                    if(j == i || j == a)
+                    {
+                        printf(") ");
+                    }
+                    else
+                    {
+                        printf(" ");
+                    }
+                    printf(" - ");
+
+                }
+                printf("\n");
+
+
+
+
+            }
+        }
+    }
+    printf("\n\nRisultato FINALE:\n");
+    for (int i=0; i<N; i++)
+    {
+        printf("%4d ", v2[i]);
     }
 
 
