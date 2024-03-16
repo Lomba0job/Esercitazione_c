@@ -10,5 +10,5 @@ int main (void)
 
 
     //Bisogna confrontare li pirmo con l'ultimo carattere e cosi via fino a metà. 
-    //Se sono uguali tutti i caratteri, allora stampa Palindromo. 
+    //Se sono uguali tutti i caratteri,j allora stampa Palindromo. 
 }
