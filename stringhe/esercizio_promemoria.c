@@ -25,10 +25,39 @@ int main(void)
         }
         printf("Enter a day reminder: ");
         scanf("%2d", &day);
+
         if (day == 0)
             break;
+            
         sprintf(day_str, "%2d", day);
         i=0;
+
+        while ((ch = getchar()) != '\n') //legge i promemoria
+        {
+            if (i < MSG_LEN)
+                msg_str [i++] = ch;
+        }
+
+        msg_str [i] = '\0';
+
+        for (i = 0; i < num_remind; i++)
+        {
+            if (strcmp(day_str, reminders[i]) < 0)
+                break;
+        }
+        for (j = num_remind; j > i; j--)
+        {
+            strcpy(reminders[j], reminders[j-1]);
+        }
+        strcpy(reminders[i], day_str);
+        strcat(reminders[i], msg_str);
+        num_remind++;
     }
+
+    printf("\nDay Reminder\n");
+    for (i = 0; i < num_remind; i++)
+    printf(" %s\n", reminders[i]);
+    return 0;
+
 
 }
