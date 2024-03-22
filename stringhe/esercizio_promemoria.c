@@ -18,10 +18,10 @@ int main(void)
 
     for(;;)
     {
-        if(num_remind == MAX_REMIND)
+        if(num_remind == MAX_REMIND) // se sono già stati inseriti il numero massimo di promemoria salvabili 
         {
-            printf("--NO SPACE LEFT--\n");
-            break;
+            printf("--NO SPACE LEFT--\n"); // stampa che è fintio lo spazio 
+            break; // esci e vai in stampa 
         }
         printf("Enter a day reminder: ");
         scanf("%2d", &day); // salvare il giorno 
