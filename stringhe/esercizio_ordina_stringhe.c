@@ -39,18 +39,33 @@ int main(void)
     }
 
     //ordina per parola (ordina anche la relativa descrizione)
+
     for (int i=0; i<ROW-1; i++)
     {
         for (int j=i+1; j<ROW; j++)
         {
-            if(strcmp(matrix_parole[i],matrix_parole[j]) > 0)
+            /*
+                1) il primo ciclo for scorre le parole dalla prima alla penultima 
+                2) il secondo ciclo for parte dalla parole successiva a quella del primo ciclo e scorre progressivamente tutte le altre fino all'utlima
+            */
+            if(strcmp(matrix_parole[i],matrix_parole[j]) > 0) 
+            // mettendo in comparazione le parole indicate dal primo ciclo e dal secondo, se quella del secondo ciclo viene prima in ordine alafaabetico dell'altra si procede allo scambio 
             {
                 // le scambiamo
                 char app[MAX_LEN_WORD]; //variabile d'appoggio necessaria per l'ordinamento
-                strcpy(app, matrix_parole[i]);
-                strcpy(matrix_parole[i], matrix_parole[j]);
-                strcpy(matrix_parole[j], app);
+                strcpy(app, matrix_parole[i]); // associamo alla variabile di appogio la parola indicata dal primo ciclo
+                // app == parola indicata da i 
+                strcpy(matrix_parole[i], matrix_parole[j]); //associamo alla parola indicata dal primo ciclo il valore di quella indicata dal secondo 
+                // parola indicata da i == parola indicatra da j e saranno diverse da app
+                strcpy(matrix_parole[j], app); //associamo la parola del secondo ciclo a quella salvata nell'appoggio 
+                // parola indicata da j == app diverse da parola indicata da i 
 
+                /*
+                parola i nuova = parola j vecchia 
+                parola j nuova = parola i vecchia
+                */
+                
+                // ripetere lo stesso procedimento anche per le relative descrizione nell'altra matrice
                 char app1[MAX_LEN_DESC];
                 strcpy(app1, matrix_descrizioni[i]);
                 strcpy(matrix_descrizioni[i], matrix_descrizioni[j]);
@@ -79,8 +94,8 @@ int main(void)
 
 
         if (num == 0)
-            break;
-        else
+            break; // USCIRE DAL CICLO FOR INFINITO
+        else // se è stato inserito un numero strampare la rispettiva descrizone 
             {
                 system("cls");
                 printf("\nHai selezionato la prola %s", matrix_parole[num-1]);
@@ -88,8 +103,21 @@ int main(void)
                 printf("%s", matrix_descrizioni[num-1]);
 
                 printf("\n\n\n\nPREMERE SPAZIO POI INVIO PER CONTINUARE");
-                while(( c = getchar()) != ' '){}
+                while(( c = getchar()) != ' '){} // aspetta che venga inviato il carattere spazio per ricominciare il ciclo 
             }
 
+
+     /*
+     ! BUG 
+
+     questo programma presenta un bug :
+     se viene inviato un numero non presente nel menu, e questo numero supera la matrice 
+     il programma restituisce errore. 
+     per risolvere basta inserire dentro l'else un controllo del numero 
+     esempio se sono state salvate 7 parole bisogna contrallare che il numero sia
+     minore o uguale a 7 prima di stampare la descrizione, in caso contrario bisogna richiederlo all'interno di un ciclo while che si ripete 
+     finche il valore non è accettabile 
+     
+     */
     }
 }
