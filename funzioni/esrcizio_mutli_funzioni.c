@@ -45,7 +45,7 @@ int main(void)
     //richiamo max
     int max = massimo(array, n);
     //richiamo min
-    int min =
+    int min = minimo(array, n);
     //richiamo somma
     long int somma =
     //richiamo media
@@ -65,4 +65,14 @@ int massimo(int a[], int n)
             max = a[i];
     }
     return max;
+}
+int nminimo(int a[], int n)
+{
+    int min = a[0];
+    for(int i=1, i<n; i++)
+    {
+        if(a[i] < min)
+            min = a[i];
+    }
+    return min;
 }
