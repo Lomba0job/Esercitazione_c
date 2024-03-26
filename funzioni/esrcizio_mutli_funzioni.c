@@ -47,9 +47,9 @@ int main(void)
     //richiamo min
     int min = minimo(array, n);
     //richiamo somma
-    long int somma =
+    long int somma = somma(array, n);
     //richiamo media
-    float media =
+    float media = media(array, n);
     //richiamo deviazione
     int deviazione =
 
@@ -66,7 +66,8 @@ int massimo(int a[], int n)
     }
     return max;
 }
-int nminimo(int a[], int n)
+
+int minimo(int a[], int n)
 {
     int min = a[0];
     for(int i=1, i<n; i++)
@@ -75,4 +76,21 @@ int nminimo(int a[], int n)
             min = a[i];
     }
     return min;
+}
+
+long int somma(int a[], int n)
+{
+    long int sum = 0;
+    for(int i=0, i<n; i++)
+    {
+        sum += a[i];
+    }
+    return sum;
+}
+
+float media(int a[], int n)
+{
+    long int sum = somma(a, n);
+    float med = sum/n;
+    return med;
 }
