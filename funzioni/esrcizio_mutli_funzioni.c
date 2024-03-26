@@ -43,7 +43,7 @@ int main(void)
     }
 
     //richiamo max
-    int max = 
+    int max = massimo(array, n);
     //richiamo min
     int min =
     //richiamo somma
@@ -54,4 +54,15 @@ int main(void)
     int deviazione =
 
     //stampa tutto
+}
+
+int massimo(int a[], int n)
+{
+    int max = a[0];
+    for(int i=1, i<n; i++)
+    {
+        if(a[i] > max)
+            max = a[i];
+    }
+    return max;
 }
