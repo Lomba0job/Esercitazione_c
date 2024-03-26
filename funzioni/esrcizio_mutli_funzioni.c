@@ -1,7 +1,7 @@
 /*
-nel main viene salvato un array di int con valori decisi dall'utente e con dimensione massima 100 
+nel main viene salvato un array di int con valori decisi dall'utente e con dimensione massima 100
 
-scrivere le funzioni che: 
+scrivere le funzioni che:
 1) si passa array e numero di valori dell'array -> restituisce max [int]
 2) si passa array e numero di valori dell'array -> restituisce min [int]
 3) si passa array e numero di valori dell'array -> restituisce somma  [long int]
@@ -13,7 +13,7 @@ scrivere le funzioni che:
 #include <stdio.h>
 #define MAX 100
 
-//prototipo 
+//prototipo
 int massimo(int a[], int n);
 int minimo(int a[], int n);
 long int somma(int a[], int n);
@@ -30,12 +30,12 @@ int main(void)
 
     printf("Quanti valori si vogliono usare? ");
     scanf("%d", &n);
-    while(n < MAX)
+    while(n > MAX)
     {
         printf("Valore massimo superato \nIl massimo di valori sono 100, quanti valori si vogliono usare? ");
         scanf("%d", &n);
     }
-    
+
     for(int i=0; i<n; i++)
     {
         printf("Inserire il valore %d: ", i+1);
@@ -60,7 +60,7 @@ int main(void)
 int massimo(int a[], int n)
 {
     int max = a[0];
-    for(int i=1, i<n; i++)
+    for(int i=1; i<n; i++)
     {
         if(a[i] > max)
             max = a[i];
@@ -71,7 +71,7 @@ int massimo(int a[], int n)
 int minimo(int a[], int n)
 {
     int min = a[0];
-    for(int i=1, i<n; i++)
+    for(int i=1; i<n; i++)
     {
         if(a[i] < min)
             min = a[i];
@@ -82,7 +82,7 @@ int minimo(int a[], int n)
 long int somma(int a[], int n)
 {
     long int sum = 0;
-    for(int i=0, i<n; i++)
+    for(int i=0; i<n; i++)
     {
         sum += a[i];
     }
@@ -100,10 +100,10 @@ float differenza_da_media(int a[], int n)
 {
     int max = massimo(a, n);
     int min = minimo(a,n);
-    float media = media(a, n);
+    float media_v = media(a, n);
 
-    float dif_m = media - min;
-    float dif_M = max - media; 
+    float dif_m = media_v - min;
+    float dif_M = max - media_v;
 
     if (dif_M > dif_m)
         return dif_M;
@@ -113,13 +113,14 @@ float differenza_da_media(int a[], int n)
 
 void stampatutto(int a[], int n, int max, int min, long int somma_v, float media_v, float diff)
 {
+    printf("array: ");
     for(int i=0; i<n; i++)
     {
         printf("%d ", a[i]);
     }
-    printf("max: %d", max);
-    printf("min: %d", min);
-    printf("somma: %ld", somma_v);
-    printf("media: %f", media_v);
-    printf("diff: %f", diff);
+    printf("\nmax: %d", max);
+    printf("\nmin: %d", min);
+    printf("\nsomma: %ld", somma_v);
+    printf("\nmedia: %f", media_v);
+    printf("\ndistanza massima da media: %f", diff);
 }
