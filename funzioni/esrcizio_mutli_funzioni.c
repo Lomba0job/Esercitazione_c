@@ -94,3 +94,18 @@ float media(int a[], int n)
     float med = sum/n;
     return med;
 }
+
+float differenza_da_media(int a[], int n)
+{
+    int max = massimo(a, n);
+    int min = minimo(a,n);
+    float media = media(a, n);
+
+    float dif_m = media - min;
+    float dif_M = max - media; 
+
+    if (dif_M > dif_m)
+        return dif_M;
+    else
+        return dif_m;
+}
