@@ -19,7 +19,7 @@ int minimo(int a[], int n);
 long int somma(int a[], int n);
 float media(int a[], int n);
 float differenza_da_media(int a[], int n);
-void stampatutto(int a[], int n, int max, int min, long int somma, float media, float diff);
+void stampatutto(int a[], int n, int max, int min, long int somma_v, float media_v, float diff);
 
 
 
@@ -47,13 +47,14 @@ int main(void)
     //richiamo min
     int min = minimo(array, n);
     //richiamo somma
-    long int somma = somma(array, n);
+    long int somma_v = somma(array, n);
     //richiamo media
-    float media = media(array, n);
+    float media_v = media(array, n);
     //richiamo deviazione
-    int deviazione =
+    int deviazione = differenza_da_media(array, n);
 
     //stampa tutto
+    stampatutto(array, n, max, min, somma_v, media_v, deviazione);
 }
 
 int massimo(int a[], int n)
@@ -108,4 +109,17 @@ float differenza_da_media(int a[], int n)
         return dif_M;
     else
         return dif_m;
+}
+
+void stampatutto(int a[], int n, int max, int min, long int somma_v, float media_v, float diff)
+{
+    for(int i=0; i<n; i++)
+    {
+        printf("%d ", a[i]);
+    }
+    printf("max: %d", max);
+    printf("min: %d", min);
+    printf("somma: %ld", somma_v);
+    printf("media: %f", media_v);
+    printf("diff: %f", diff);
 }
