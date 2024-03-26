@@ -6,18 +6,26 @@ scrivere le funzioni che:
 2) si passa array e numero di valori dell'array -> restituisce min [int]
 3) si passa array e numero di valori dell'array -> restituisce somma  [long int]
 4) si passa array e numero di valori dell'array -> restituisce media [float]
-5) si passa array e numero di valori dell'array -> restituisce deviazione max rispetto media  [int]
-6) si passa array e numero di valori dell'array -> restituisce array ordinato in ordine crescente [int []]
+5) si passa array e numero di valori dell'array -> restituisce deviazione max rispetto media  [float]
 
 7) funzione di stampa di tutto, passando tutti i singoli valori
 */
 #include <stdio.h>
 #define MAX 100
 
+//prototipo 
+int massimo(int a[], int n);
+int minimo(int a[], int n);
+long int somma(int a[], int n);
+float media(int a[], int n);
+float differenza_da_media(int a[], int n);
+void stampatutto(int a[], int n, int max, int min, long int somma, float media, float diff);
+
+
 
 int main(void)
 {
-    int array[100];
+    int array[MAX];
     int n;
 
     printf("Quanti valori si vogliono usare? ");
@@ -44,9 +52,6 @@ int main(void)
     float media =
     //richiamo deviazione
     int deviazione =
-    //ordine crescente 
-    int array_ordinato[MAX];
-    array_ordinato = 
 
     //stampa tutto
 }
