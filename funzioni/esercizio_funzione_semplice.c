@@ -10,6 +10,29 @@ Funzione di count down
 
 #include <stdio.h> //libreria standard
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void countdown(int a) //dichiariamo la funzione countdown prima della funzione main prendendo in input un valore intero
 {
     for (int i=a; i>=0; i--) //il ciclo for si occupa di scorrere i numeri a ritroso partendo dal valore dato in input
