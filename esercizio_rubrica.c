@@ -23,14 +23,14 @@ predisporere un menu per scegliere quale opzione eseguire tra:
 #include <string.h>
 
 #define MAX 100
-typedef struct
+typedef struct 
 {
     char p_name[10], p_surname[20], factory[15];
     unsigned short int day, month, year;
     unsigned long int phonenumber;
 }persona;
 
-add_element(persona array[], int* ptr_n) //riceve l'array di persona e il putatore a n che rappresenta la prima posizione libera
+void add_element(persona array[], int* ptr_n) //riceve l'array di persona e il putatore a n che rappresenta la prima posizione libera
 {
     unsigned long int temp;
     //menu per inserimento deri valori nella struct nella posizone n dell'array
@@ -38,27 +38,27 @@ add_element(persona array[], int* ptr_n) //riceve l'array di persona e il putato
     printf("Inserisci numero di telefono: ");
     scanf("%lu", &temp);
     array[*ptr_n].phonenumber = temp;
-    *ptr_n++;
+    (*ptr_n)++;
     //incremento di n, per ricordare qual'è la prossima posiozione libera
 
 }
 
-del_element--++()
+void del_element()
 {
 
 }
 
-edt_element()
+void edt_element()
 {
 
 }
 
-src_element_by_name()
+void src_element_by_name()
 {
 
 }
 
-src_element_by_surname()
+void src_element_by_surname()
 {
 
 }
@@ -85,12 +85,12 @@ int main(void)
 
         //scegliere l'opzione
         printf("\n\n\nopzione: ");
-        scanf("%d", opt);
+        scanf("%d", &opt);
 
-        while(opt>=0 && opt<=5)
+        while(opt<0 && opt>5)
         {
-            printf("\nopzione sconosciuta, immetti un'opzione presente nel menu: ");
-            scanf("%d", opt);
+            printf("\nopzione %d sconosciuta, immetti un'opzione presente nel menu: ", opt);
+            scanf("%d", &opt);
         }
         short int flag = 0;
         //opzione di uscita  con break;
