@@ -37,6 +37,51 @@ typedef struct struttura_lista
 
 typedef TipoNodoLista *TipoLista;
 
+typedef struct struttura_coda
+{
+    int a; //id crescente
+    float b; //la versione della lista
+    char parola[20]; //numero id scritto
+    struct struttura_lista *next;
+}TipoNodoCoda;
+
+typedef TipoNodoCoda *TipoCoda;
+
+
+/*
+TEORIA SULLE LISTE E CODE:
+
+    LISTA:
+        attualmente è:
+            HEAD->elemento1->NULL
+        se aggiungo elemento2 diventa:
+            HEAD->elemento2->elemento1->NULL
+
+    CODA:
+        attualmente è:
+            HEAD->elemento1->NULL
+        se aggiungo elemento2 diventa:
+            HEAD->elemento1->elemento2->NULL
+
+*/
+
+
+//PROTOTIPO
+//lista
+TipoLista add_first_element_lista(TipoLista head);
+TipoLista add_element_lista(TipoLista head);
+void stampa_lista(TipoLista head);
+void stampa_elemento_lista(TipoLista head);
+
+//coda
+TipoCoda add_first_element_coda(TipoCoda head);
+void add_element_coda(TipoCoda head);
+void stampa_coda(TipoCoda head);
+void stampa_elemento_coda(TipoCoda head);
+
+//generali
+void trova_parola(int n, char p[20]);
+
 
 void trova_parola(int n, char p[20])
 {
@@ -96,62 +141,81 @@ void trova_parola(int n, char p[20])
     }
 }
 
-void add_first_element(TipoLista head)
+
+//programma LISTA
+TipoLista add_first_element_lista(TipoLista head)
 {
-    head = (TipoLista)malloc(sizeof(TipoNodoLista));
-    head->a = 1;
-    head->b = 1.1;
-    strcpy(head->parola, "Uno");
-    head->next = NULL;
+    head = (TipoLista)malloc(sizeof(TipoNodoLista)); //alloca la memoria di spazio struct 
+    head->a = 1; //pone a dentro la struttura uguale a 1
+    head->b = 1.1; //pone b dentro la struttura uguale a 1.1
+    strcpy(head->parola, "Uno"); //copia la stringa dentro la struttura
+    head->next = NULL; //pone next NULLO perchè non c'è niente dopo 
+    return head; //restituisce head che punta alla nuova struttura 
 }
 
-void add_element(TipoLista head)
+TipoLista add_element_lista(TipoLista head)
 {
-    TipoLista paux;
-    paux = (TipoLista)malloc(sizeof(TipoNodoLista));
-    int numero;
-    float versione;
 
-    numero = head->a;
-    versione = head->b;
+    TipoLista paux; //crea un puntatore temporaneo 
+    paux = (TipoLista)malloc(sizeof(TipoNodoLista)); //gli associa la nuova allocazione di memoria 
+    int numero;     //crea variabile d'appoggio
+    float versione; //crea variabile d'appoggio
 
-    paux->next = head;
-    paux->a = numero+1;
-    paux->b = versione;
+    numero = head->a; //associa il valore della variabile d'appoggio con quello contenuta nell'ultimo elemento della lista aggiunto 
+    versione = head->b; //associa il valore della variabile d'appoggio con quello contenuta nell'ultimo elemento della lista aggiunto 
+
+    paux->next = head; //pone next della nuova satruttura uguale alla vecchia head
+    paux->a = numero+1; //pone a della nuova struttura ugule a l'ultima vecchia  aggiungendo uno 
+    paux->b = versione; //la versione è la stessa
 
     char parola_p[20];
-    trova_parola(numero+1, parola_p);
+    trova_parola(numero+1, parola_p); //funzione per la stringa 
 
     strcpy(paux->parola, parola_p);
-    ;
-    head = paux;
+    head = paux; //aggionrna head che ora punta l'ultimo aggiunto nella lista
+    return head;
 }
-void stampa_elemento(TipoLista head)
+
+void stampa_elemento_lista(TipoLista head)
 {
-    printf("OGGETO\nID:\t%d\nPAROLA:\t%s\nVERSIONE:\t%f\n\n", head->a, head->parola, head->b);
+    printf("OGGETO\nID:\t%d\nPAROLA:\t%s\nVERSIONE:\t%f\nNEXT:%X\n\n", head->a, head->parola, head->b, head->next); //stampa il conenuto della lista 
 }
 
 void stampa_lista(TipoLista head)
 {
     TipoLista paux;
     paux = head->next;
-    stampa_elemento(head);
+    stampa_elemento_lista(head); //richiamo a stampo elemento 
     if(paux != NULL)
-        stampa_lista(paux);
+        stampa_lista(paux); //richiamata ricorsiva fino a NULL
 
 }
+//fine programma lista
+
+//programma coda
+TipoCoda add_first_element_coda(TipoCoda head)
+{
+    head = (TipoCoda)malloc(sizeof(TipoNodoCoda));
+}
+void add_element_coda(TipoCoda head);
+void stampa_coda(TipoCoda head);
+void stampa_elemento_coda(TipoCoda head);
+//fine programma coda
 
 int main (void)
 {
-    TipoLista head;
-    add_first_element(head);
+    TipoLista head_lista;
+    head_lista = add_first_element_lista(head_lista);
 
     for (int i = 0; i<10; i++)
     {
         //aggiungere 10 elementi nella lista
-        add_element(head);
+        head_lista = add_element_lista(head_lista);
     }
 
-    stampa_lista(head);
+    stampa_lista(head_lista);
+
+    TipoCoda head_coda;
+
 
 }
