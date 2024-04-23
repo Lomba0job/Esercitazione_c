@@ -242,21 +242,116 @@ void stampa_elemento_coda(TipoCoda head)
     printf("Elemento %d\nVersione %f\nParola %s\n\n", head->a, head->b, head->parola);
 
 }
-
-
 //fine programma coda
+
+
+
+
+//funzioni di modifica della lista
+
+//funzione elimina elemento lista
+TipoLista elimina_primo_elemento_lista(TipoLista head)
+{
+    TipoLista paux;
+    paux = head->next;
+    free(head);
+    head = paux;
+    return head;
+}
+
+void elemina_elemento_intermedio_lista(TipoLista precedente)
+{
+     TipoLista del = precedente->next;
+     precedente->next = del->next;
+     free(del);
+}
+
+//funzione trova nuemro pari nella lista
+TipoLista trova_pari_lista(TipoLista head)
+{
+    if(head->a % 2 == 0 )
+        head = elimina_primo_elemento_lista(head);
+
+    TipoLista paux = head->next;
+    TipoLista paux1 = head;
+    while (paux != NULL)
+    {
+        if(paux->a % 2 == 0)
+        {
+            elemina_elemento_intermedio_lista(paux1);
+        }
+        paux1 = paux;
+        paux = paux->next;
+    }
+
+    return head;
+}
+//fine funzioni di modifica della lista
+
+
+//funzione trova numeri dispari della coda ed eliminali
+TipoCoda elimina_primo_elemento_coda(TipoCoda head)
+{
+    TipoCoda headnew = head->next;
+    free(head);
+    return headnew;
+}
+
+void elimina_elemento_coda(TipoCoda precedente)
+{
+    TipoCoda da_eliminare = precedente->next;
+    TipoCoda successivo = da_eliminare->next;
+
+    precedente->next = successivo;
+    free(da_eliminare);
+}
+
+TipoCoda trova_dispari_coda(TipoCoda head)
+{
+    if(head == NULL)
+        return NULL;
+
+    if (head->a % 2 != 0)
+    {
+        head = elimina_primo_elemento_coda(head);
+        head = trova_dispari_coda(head);
+        return head;
+    }
+    else 
+    {
+        TipoCoda paux = head;
+        TipoCoda paux2 = head->next;
+        while(paux2 != NULL)
+        {
+            if(paux2->a % 2 != 0)
+            {
+                elimina_elemento_coda(paux);
+            }
+            paux = paux2;
+            paux2 = paux2->next;
+        }
+    }
+    return head;
+}
+
+
+//fine funzione 
+
 
 int main (void)
 {
     TipoLista head_lista;
     head_lista = add_first_element_lista(head_lista);
 
-    for (int i = 0; i<10; i++)
+    for (int i = 0; i<9; i++)
     {
         //aggiungere 10 elementi nella lista
         head_lista = add_element_lista(head_lista);
     }
-    printf("\n--------------------------------------------------------------\nLISTA\n-------------------------------------------------------------------------------------\n");
+    printf("\n--------------------------------------------------------------\nLISTA-pre_delete\n--------------------------------------------------------------\n");
+    stampa_lista(head_lista);
+    head_lista = trova_pari_lista(head_lista);
+    printf("\n--------------------------------------------------------------\nLISTA\n--------------------------------------------------------------\n");
     stampa_lista(head_lista);
 
     TipoCoda head_coda;
@@ -267,6 +362,7 @@ int main (void)
         //aggiungere 10 elementi nella lista
         add_element_coda(head_coda);
     }
-    printf("\n--------------------------------------------------------------\nCODA\n-------------------------------------------------------------------------------------\n");
+    head_coda = trova_dispari_coda(head_coda);
+    printf("\n--------------------------------------------------------------\nCODA\n--------------------------------------------------------------\n");
     stampa_coda(head_coda);
 }
