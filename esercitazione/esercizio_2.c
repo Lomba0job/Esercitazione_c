@@ -15,4 +15,13 @@ predisporre una funzione per inserire un nuovo operaio
 predisporre una funzione per stampare l'operaio con lo stipendio più alto di un determinato reparto 
 predisporre una funzione per modificare lo stipendio di un operairo passando il nuovo stipendio e il codice fiscale 
 predisporre una funzione per licenziare un operaio 
+
+Quando fate modifiche all'esercizio apreire il termianle sottostante  (CTRL + j)
+scrivere i seguenti comandi:
+
+    git add .
+    git commit -m " scrivere qui le modifiche che sono state scritte o una descrizione "
+    git push 
+
+
 */
