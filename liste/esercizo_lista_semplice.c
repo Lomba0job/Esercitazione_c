@@ -319,6 +319,7 @@ TipoCoda trova_dispari_coda(TipoCoda head)
     }
     else 
     {
+
         TipoCoda paux = head;
         TipoCoda paux2 = head->next;
         while(paux2 != NULL)
