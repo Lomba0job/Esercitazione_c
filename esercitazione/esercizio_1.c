@@ -17,4 +17,12 @@ predisporre una funzione per vedere la regione e la dimensione di tutti i campi 
 predisporre una funzione che passata la dimensione e la regione elimini l' elemento dalla lista e stampi il prezzo di vendita
 
 
+Quando fate modifiche all'esercizio apreire il termianle sottostante  (CTRL + j)
+scrivere i seguenti comandi:
+
+    git add .
+    git commit -m " scrivere qui le modifiche che sono state scritte o una descrizione "
+    git push 
+
+
 */
