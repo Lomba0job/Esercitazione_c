@@ -16,7 +16,7 @@ predisporre una funzione per inserire un nuovo operaio                          
 -----------------------------------------------------------------------------------------------------------------------------------------------
 predisporre una funzione per stampare l'operaio con lo stipendio più alto di un determinato reparto                                 | FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
-predisporre una funzione per modificare lo stipendio di un operairo passando il nuovo stipendio e il codice fiscale                 |NON FUNZIONA
+predisporre una funzione per promuovere un operairo passando il codice fiscale e il nuovo stipendio                                 |NON FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
 predisporre una funzione per licenziare un operaio                                                                                  |NON FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -120,7 +120,18 @@ void operaioRicco(TipoLista head, int reparto)
     }
 }
 
-
+void modificaStipendio(TipoLista head, char cerca_cf[12], int nuovo_stipendio)
+{
+    while(head != NULL)
+    {
+        if(strcmp(head->cf, cerca_cf) == 0)
+        {
+            head->stipendio = nuovo_stipendio;
+            printf("Stipendio all'operaio %s aggiornato a %d", head->cf, head->stipendio);
+        }
+        head = head->next;
+    }
+}
 
 int main(void)
 {
@@ -131,6 +142,8 @@ int main(void)
     head = nuovoOperaio(head);
 
     int reparto = 1;
+    operaioRicco(head, reparto);
+    modificaStipendio(head, "1212", 500);
     operaioRicco(head, reparto);
     return 0;
 }
