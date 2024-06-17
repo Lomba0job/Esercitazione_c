@@ -16,7 +16,7 @@ predisporre una funzione per inserire un nuovo operaio                          
 -----------------------------------------------------------------------------------------------------------------------------------------------
 predisporre una funzione per stampare l'operaio con lo stipendio più alto di un determinato reparto                                 | FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
-predisporre una funzione per promuovere un operairo passando il codice fiscale e il nuovo stipendio                                 |NON FUNZIONA
+predisporre una funzione per promuovere un operairo passando il codice fiscale e il nuovo stipendio                                 | FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
 predisporre una funzione per licenziare un operaio                                                                                  |NON FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -133,6 +133,38 @@ void modificaStipendio(TipoLista head, char cerca_cf[12], int nuovo_stipendio)
     }
 }
 
+
+TipoLista licenziaOperaio(TipoLista head, char cerca_cf[12])
+{
+    TipoLista temp = head;
+    
+    while(temp != NULL)
+    {
+        if(strcmp(temp->cf, cerca_cf) == 0)
+        {
+            if(temp->prev == NULL)
+            {
+                head=temp->next;
+                head->prev = NULL;
+                free(temp);
+            }
+            else if (temp->next == NULL)
+            {
+                temp->prev->next = NULL;
+                free(temp);
+            }
+            else
+            {
+                temp->next->prev = temp->prev;
+                temp->prev->next = temp->next;
+                free(temp);
+            }
+        }
+        temp = temp->next;
+    }
+    return head;
+}
+
 int main(void)
 {
     TipoLista head = NULL;
@@ -145,5 +177,6 @@ int main(void)
     operaioRicco(head, reparto);
     modificaStipendio(head, "1212", 500);
     operaioRicco(head, reparto);
+    head = licenziaOperaio(head, "2323");
     return 0;
 }
