@@ -18,7 +18,7 @@ predisporre una funzione per stampare l'operaio con lo stipendio più alto di un
 -----------------------------------------------------------------------------------------------------------------------------------------------
 predisporre una funzione per promuovere un operairo passando il codice fiscale e il nuovo stipendio                                 | FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
-predisporre una funzione per licenziare un operaio                                                                                  |NON FUNZIONA
+predisporre una funzione per licenziare un operaio                                                                                  | FUNZIONA
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 
