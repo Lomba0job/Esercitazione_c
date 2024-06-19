@@ -14,8 +14,8 @@ numero_pezzi_mensile intero
 creare due liste chimate produzione_reparto1 e produzione_reparto2
 predisporre una funzione per aggiungere i dipendenti nella lista1 e nella lista2
 predisporre una funzione che, passata, la lista, l' id, il numero del giorno e il numero di pezzi prodotti; setti sull'operaio (id) il suo resoconto giornaliero di produzione
-predisporre una funzione chiamata fine_mese che per la lista pssata calcoli la prodiuzione mensile dI OGNI OPERAIO 
-predisporre una funzione per stampare i primi tre operai di ogni reparto 
+predisporre una funzione chiamata fine_mese che per la lista passata calcoli la prodiuzione mensile di OGNI OPERAIO
+predisporre una funzione per stampare i primi tre operai di ogni reparto
 
 Quando fate modifiche all'esercizio apreire il termianle sottostante  (CTRL + j)
 scrivere i seguenti comandi:
@@ -86,8 +86,9 @@ TipoLista addOperaio(TipoLista head)
 void resoconto(TipoLista head, int identifier, int dayNum, int pezziProdotti)
 {
     TipoLista temp = head;
-    if (dayNum >= 0 && dayNum < 31)
+    if (dayNum < 0 || dayNum >= 31)
     {
+        printf("il parametro giorno passato non va bene.");
         break;
     }
     else
@@ -103,6 +104,39 @@ void resoconto(TipoLista head, int identifier, int dayNum, int pezziProdotti)
     }
     
 }
+//predisporre una funzione chiamata fine_mese che per la lista passata calcoli la prodiuzione mensile di OGNI OPERAIO
+void fine_mese(TipoLista head)
+{
+    TipoLista temp = head;
+    while(temp != NULL)
+    {
+        int numPezzi = 0;
+        for(int i=0; i<31; i++)
+        {
+            numPezzi = numPezzi + vettore[i];
+            vettore[i] = 0;
+        }
+        temp->numero_pezzi_mensile = numPezzi;
+        temp = temp->next;
+    }
+}
+//predisporre una funzione per stampare i primi tre operai di ogni reparto
+void premioProduzione(TipoLista head)
+{
+    TipoLista temp = head;
+    TipoLista dipendente1;
+    int valMax = 0;
+    while(temp != NULL)
+    {
+        if(temp->numero_pezzi_mensile > valMax)
+        {
+            valMax = temp->numero_pezzi_mensile;
+            dipendente1 = temp;
+        }
+        temp = temp->next;
+    }
+}
+
 int main(void)
 {
     TipoLista produzione_reparto1 = NULL;
@@ -110,5 +144,9 @@ int main(void)
 
     produzione_reparto1 = addOperaio(produzione_reparto1);
     produzione_reparto2 = addOperaio(produzione_reparto2);
+    resoconto(produzione_reparto1, 1, 23, 45);
+    resoconto(produzione_reparto2, 2, 24, 43);
+    fine_mese(produzione_reparto1);
+    fine_mese(produzione_reparto2);
     return 0;
 }
