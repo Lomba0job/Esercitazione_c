@@ -1,0 +1,10 @@
+Anna Rossi 10 10 9
+Luca Bianchi 7 9 9
+Maria Verdi 6 6 8
+Marco Esposito 6 7 9
+Giulia Russo 8 6 9
+Francesco Gallo 6 10 6
+Elena Conti 8 8 9
+Andrea Greco 10 9 9
+Sofia Bruno 9 9 8
+Matteo Ferrari 10 10 6
